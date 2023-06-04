@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{627350A1-BF64-41C9-98DA-5139D6FA8FF9}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Basket" expanded="True">
+            <Node name="Basket.API" expanded="True" />
+            <Node name="Basket.Core" expanded="True" />
+            <Node name="Basket.EntityFramework" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Basket.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

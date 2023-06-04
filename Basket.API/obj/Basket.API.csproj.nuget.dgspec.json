@@ -1,34 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Kuwaot\\Brami\\Basket\\Basket.API\\Basket.API.csproj": {}
+    "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.API/Basket.API.csproj": {}
   },
   "projects": {
-    "D:\\Kuwaot\\Brami\\Basket\\Basket.API\\Basket.API.csproj": {
+    "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.API/Basket.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kuwaot\\Brami\\Basket\\Basket.API\\Basket.API.csproj",
+        "projectUniqueName": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.API/Basket.API.csproj",
         "projectName": "Basket.API",
-        "projectPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.API\\Basket.API.csproj",
-        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
-        "outputPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.API\\obj\\",
+        "projectPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.API/Basket.API.csproj",
+        "packagesPath": "/Users/sherbeny/.nuget/packages/",
+        "outputPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sherbeny/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "/usr/local/share/dotnet/sdk/7.0.302/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\Basket.EntityFramework.csproj": {
-                "projectPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\Basket.EntityFramework.csproj"
+              "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/Basket.EntityFramework.csproj": {
+                "projectPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/Basket.EntityFramework.csproj"
               }
             }
           }
@@ -77,27 +78,27 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\Basket.Core.csproj": {
+    "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/Basket.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\Basket.Core.csproj",
+        "projectUniqueName": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/Basket.Core.csproj",
         "projectName": "Basket.Core",
-        "projectPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\Basket.Core.csproj",
-        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
-        "outputPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\obj\\",
+        "projectPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/Basket.Core.csproj",
+        "packagesPath": "/Users/sherbeny/.nuget/packages/",
+        "outputPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sherbeny/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -141,35 +142,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\Basket.EntityFramework.csproj": {
+    "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/Basket.EntityFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\Basket.EntityFramework.csproj",
+        "projectUniqueName": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/Basket.EntityFramework.csproj",
         "projectName": "Basket.EntityFramework",
-        "projectPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\Basket.EntityFramework.csproj",
-        "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
-        "outputPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.EntityFramework\\obj\\",
+        "projectPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/Basket.EntityFramework.csproj",
+        "packagesPath": "/Users/sherbeny/.nuget/packages/",
+        "outputPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.EntityFramework/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mahmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sherbeny/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\Basket.Core.csproj": {
-                "projectPath": "D:\\Kuwaot\\Brami\\Basket\\Basket.Core\\Basket.Core.csproj"
+              "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/Basket.Core.csproj": {
+                "projectPath": "/Users/sherbeny/Desktop/Storage/Work/Group-I/Projects/API/Brami/Basket.Core/Basket.Core.csproj"
               }
             }
           }
@@ -237,7 +238,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }
