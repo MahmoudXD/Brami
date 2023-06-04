@@ -1,0 +1,12 @@
+D:\Kuwaot\Brami\Basket\Basket.Core\bin\Debug\net7.0\Basket.Core.deps.json
+D:\Kuwaot\Brami\Basket\Basket.Core\bin\Debug\net7.0\Basket.Core.dll
+D:\Kuwaot\Brami\Basket\Basket.Core\bin\Debug\net7.0\Basket.Core.pdb
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.csproj.AssemblyReference.cache
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.AssemblyInfoInputs.cache
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.AssemblyInfo.cs
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.csproj.CoreCompileInputs.cache
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.dll
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\refint\Basket.Core.dll
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\Basket.Core.pdb
+D:\Kuwaot\Brami\Basket\Basket.Core\obj\Debug\net7.0\ref\Basket.Core.dll
