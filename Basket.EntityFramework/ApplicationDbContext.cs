@@ -1,5 +1,6 @@
 ﻿using Basket.Core.Entity.Catogry;
 using Basket.Core.Entity.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Basket.EntityFramework
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
 	{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) { }
 
@@ -31,7 +32,6 @@ namespace Basket.EntityFramework
 		public DbSet<FavouriteStoreList> FavouriteStoreLists { get; set; }
 		public DbSet<WishList> WishLists { get; set; }
 		public DbSet<WishListProduct> WishListProducts { get; set; }
-
 		public DbSet<Anounance> Anounances { get; set; }
 		public DbSet<AnounanceItem> AnounanceItems { get; set; }
 	}

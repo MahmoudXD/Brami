@@ -1,4 +1,4 @@
-﻿namespace Basket.API.Helper
+﻿namespace Basket.Core.Helper
 {
 	public class JWT
 	{

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Basket.EntityFramework.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230605201518_AddAddresses")]
-    partial class AddAddresses
+    [Migration("20230605214313_ItionalMigration")]
+    partial class ItionalMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,76 @@ namespace Basket.EntityFramework.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Anounance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anounances");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AnounanceItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AnounanceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnounanceId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AnounanceItems");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Area", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArabicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EnglishName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Areas");
+                });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.AttributeTitle", b =>
                 {
@@ -69,6 +139,51 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AttributeValues");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartProducts");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -78,7 +193,10 @@ namespace Basket.EntityFramework.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -100,7 +218,10 @@ namespace Basket.EntityFramework.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastUpdatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LastUpdatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastUpdatedOn")
                         .HasColumnType("datetime2");
@@ -123,15 +244,81 @@ namespace Basket.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
+                    b.HasIndex("CreatedById1");
 
-                    b.HasIndex("LastUpdatedById");
+                    b.HasIndex("LastUpdatedById1");
 
                     b.HasIndex("MainCatogryId");
 
                     b.HasIndex("StoreId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArabicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnglishName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("FavouriteStores");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStoreList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FavouriteStoreId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FavouriteStoreId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("FavouriteStoreLists");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Image", b =>
@@ -168,7 +355,10 @@ namespace Basket.EntityFramework.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -180,7 +370,10 @@ namespace Basket.EntityFramework.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastUpdatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LastUpdatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastUpdatedOn")
                         .HasColumnType("datetime2");
@@ -193,9 +386,9 @@ namespace Basket.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
+                    b.HasIndex("CreatedById1");
 
-                    b.HasIndex("LastUpdatedById");
+                    b.HasIndex("LastUpdatedById1");
 
                     b.ToTable("MainCatogries");
                 });
@@ -256,15 +449,6 @@ namespace Basket.EntityFramework.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<byte>("Rate")
-                        .HasColumnType("tinyint");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -284,7 +468,10 @@ namespace Basket.EntityFramework.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -302,7 +489,10 @@ namespace Basket.EntityFramework.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastUpdatedById")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LastUpdatedById1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastUpdatedOn")
                         .HasColumnType("datetime2");
@@ -318,13 +508,58 @@ namespace Basket.EntityFramework.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
+                    b.HasIndex("CreatedById1");
 
-                    b.HasIndex("LastUpdatedById");
+                    b.HasIndex("LastUpdatedById1");
 
                     b.HasIndex("MainCatogryId");
 
                     b.ToTable("Stores");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("WishLists");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishListProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("WishlistId");
+
+                    b.ToTable("WishListProducts");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.User.Address", b =>
@@ -335,16 +570,14 @@ namespace Basket.EntityFramework.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Area")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AreaId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Block")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CoordinatesId")
                         .HasColumnType("int");
@@ -362,22 +595,56 @@ namespace Basket.EntityFramework.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("CityId");
 
                     b.HasIndex("CoordinatesId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.User.ApplicationRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.User.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -472,34 +739,7 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("Coordinates");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -513,9 +753,8 @@ namespace Basket.EntityFramework.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -524,7 +763,7 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -538,9 +777,8 @@ namespace Basket.EntityFramework.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -549,7 +787,7 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -560,9 +798,8 @@ namespace Basket.EntityFramework.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -571,13 +808,13 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -586,10 +823,10 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -603,6 +840,36 @@ namespace Basket.EntityFramework.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AnounanceItem", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Anounance", "Anounance")
+                        .WithMany("AnounanceItem")
+                        .HasForeignKey("AnounanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Anounance");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Area", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.City", "City")
+                        .WithMany("Areas")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.AttributeValue", b =>
@@ -624,15 +891,45 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.CartProduct", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Cart", "Cart")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById1");
 
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "LastUpdatedBy")
                         .WithMany()
-                        .HasForeignKey("LastUpdatedById");
+                        .HasForeignKey("LastUpdatedById1");
 
                     b.HasOne("Basket.Core.Entity.Catogry.MainCatogry", "MainCatogry")
                         .WithMany()
@@ -655,6 +952,36 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("Store");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStoreList", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.FavouriteStore", "FavouriteStore")
+                        .WithMany("FavouriteStoreList")
+                        .HasForeignKey("FavouriteStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavouriteStore");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Image", b =>
                 {
                     b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
@@ -670,11 +997,11 @@ namespace Basket.EntityFramework.Migrations
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById1");
 
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "LastUpdatedBy")
                         .WithMany()
-                        .HasForeignKey("LastUpdatedById");
+                        .HasForeignKey("LastUpdatedById1");
 
                     b.Navigation("CreatedBy");
 
@@ -707,11 +1034,11 @@ namespace Basket.EntityFramework.Migrations
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById1");
 
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "LastUpdatedBy")
                         .WithMany()
-                        .HasForeignKey("LastUpdatedById");
+                        .HasForeignKey("LastUpdatedById1");
 
                     b.HasOne("Basket.Core.Entity.Catogry.MainCatogry", "mainCatogry")
                         .WithMany("Stores")
@@ -726,8 +1053,50 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("mainCatogry");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishListProduct", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.WishList", "WishList")
+                        .WithMany("WishListProducts")
+                        .HasForeignKey("WishlistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("WishList");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.User.Address", b =>
                 {
+                    b.HasOne("Basket.Core.Entity.Catogry.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Basket.Core.Entity.User.Coordinates", "Coordinates")
                         .WithMany()
                         .HasForeignKey("CoordinatesId")
@@ -735,24 +1104,30 @@ namespace Basket.EntityFramework.Migrations
                         .IsRequired();
 
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("City");
 
                     b.Navigation("Coordinates");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Basket.Core.Entity.User.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", null)
                         .WithMany()
@@ -761,7 +1136,7 @@ namespace Basket.EntityFramework.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", null)
                         .WithMany()
@@ -770,9 +1145,9 @@ namespace Basket.EntityFramework.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Basket.Core.Entity.User.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -785,18 +1160,38 @@ namespace Basket.EntityFramework.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Anounance", b =>
+                {
+                    b.Navigation("AnounanceItem");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.Navigation("CartProducts");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.City", b =>
+                {
+                    b.Navigation("Areas");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.Navigation("FavouriteStoreList");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.MainCatogry", b =>
@@ -811,6 +1206,16 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Offers");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.Navigation("WishListProducts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.User.ApplicationUser", b =>
+                {
+                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

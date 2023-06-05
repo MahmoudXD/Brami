@@ -1,4 +1,4 @@
-using Basket.API.Helper;
+using Basket.Core.Helper;
 using Basket.EntityFramework;
 using Basket.Core.Entity.User;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +17,7 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 service.Configure<JWT>(configuration.GetSection("JWT"));
-service.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+service.AddIdentity<ApplicationUser, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 service.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
 																			b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
