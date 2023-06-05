@@ -14,5 +14,7 @@ namespace Basket.Core.Entity.Catogry
 		public string? NameEn { get; set; }
 		public string? Image { get; set; }
 		public string? ColorHEX { get; set; }
-    }
+
+		public ICollection<Store> Stores { get; set; }
+	}
 }

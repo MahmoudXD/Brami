@@ -12,5 +12,6 @@ namespace Basket.Core.Entity.User
 		public string FullName { get; set; }
 		public string? RefreshToken { get; set; }
 		public DateTime RefreshTokenExpiryTime { get; set; }
+		public ICollection<Address> Addresses { get; set; }
 	}
 }

@@ -4,7 +4,7 @@ using Basket.Core.Entity.Base;
 
 namespace Basket.Core.Entity.Catogry
 {
-	public class Category: BaseModel
+	public class Category : BaseModel
 	{
 		public int Id { get; set; }
 
@@ -27,8 +27,8 @@ namespace Basket.Core.Entity.Catogry
 		public virtual MainCatogry? MainCatogry { get; set; }
 
 		public int StoreId { get; set; }
+		public Store Store { get; set; }
 
-		[ForeignKey(nameof(StoreId))]
-		public virtual Store? Store { get; set; }
+		public ICollection<Product> Products { get; set; }
 	}
 }

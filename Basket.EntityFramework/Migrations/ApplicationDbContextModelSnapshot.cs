@@ -22,6 +22,165 @@ namespace Basket.EntityFramework.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Anounance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Anounances");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AnounanceItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AnounanceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnounanceId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AnounanceItems");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Area", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArabicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EnglishName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Areas");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AttributeTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attributes");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AttributeValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("AttributeValues");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.CartProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartProducts");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -87,6 +246,94 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArabicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnglishName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("FavouriteStores");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStoreList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FavouriteStoreId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FavouriteStoreId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("FavouriteStoreLists");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.MainCatogry", b =>
                 {
                     b.Property<int?>("Id")
@@ -129,6 +376,69 @@ namespace Basket.EntityFramework.Migrations
                     b.HasIndex("LastUpdatedById");
 
                     b.ToTable("MainCatogries");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Offers");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DescriptionAr")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("DescriptionEn")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Store", b =>
@@ -184,6 +494,101 @@ namespace Basket.EntityFramework.Migrations
                     b.HasIndex("MainCatogryId");
 
                     b.ToTable("Stores");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("WishLists");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishListProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("WishlistId");
+
+                    b.ToTable("WishListProducts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.User.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AreaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Block")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoordinatesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Flat")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Floor")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CoordinatesId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Basket.Core.Entity.User.ApplicationUser", b =>
@@ -259,6 +664,29 @@ namespace Basket.EntityFramework.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.User.Coordinates", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("latatiude")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("longatiude")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Coordinates");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -394,6 +822,83 @@ namespace Basket.EntityFramework.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AnounanceItem", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Anounance", "Anounance")
+                        .WithMany("AnounanceItem")
+                        .HasForeignKey("AnounanceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Anounance");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Area", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.City", "City")
+                        .WithMany("Areas")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.AttributeValue", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.AttributeTitle", "Attribute")
+                        .WithMany()
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany("AttributeValues")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.CartProduct", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Cart", "Cart")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
@@ -425,6 +930,45 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("Store");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStoreList", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.FavouriteStore", "FavouriteStore")
+                        .WithMany("FavouriteStoreList")
+                        .HasForeignKey("FavouriteStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavouriteStore");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Image", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.MainCatogry", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
@@ -440,6 +984,28 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("LastUpdatedBy");
                 });
 
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Offer", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany("Offers")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Product", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("Basket.Core.Entity.Catogry.Store", b =>
                 {
                     b.HasOne("Basket.Core.Entity.User.ApplicationUser", "CreatedBy")
@@ -451,7 +1017,7 @@ namespace Basket.EntityFramework.Migrations
                         .HasForeignKey("LastUpdatedById");
 
                     b.HasOne("Basket.Core.Entity.Catogry.MainCatogry", "mainCatogry")
-                        .WithMany()
+                        .WithMany("Stores")
                         .HasForeignKey("MainCatogryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -461,6 +1027,69 @@ namespace Basket.EntityFramework.Migrations
                     b.Navigation("LastUpdatedBy");
 
                     b.Navigation("mainCatogry");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishListProduct", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.WishList", "WishList")
+                        .WithMany("WishListProducts")
+                        .HasForeignKey("WishlistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("WishList");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.User.Address", b =>
+                {
+                    b.HasOne("Basket.Core.Entity.Catogry.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.Catogry.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.User.Coordinates", "Coordinates")
+                        .WithMany()
+                        .HasForeignKey("CoordinatesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Basket.Core.Entity.User.ApplicationUser", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Area");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Coordinates");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -512,6 +1141,55 @@ namespace Basket.EntityFramework.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Anounance", b =>
+                {
+                    b.Navigation("AnounanceItem");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Cart", b =>
+                {
+                    b.Navigation("CartProducts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.City", b =>
+                {
+                    b.Navigation("Areas");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.FavouriteStore", b =>
+                {
+                    b.Navigation("FavouriteStoreList");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.MainCatogry", b =>
+                {
+                    b.Navigation("Stores");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.Product", b =>
+                {
+                    b.Navigation("AttributeValues");
+
+                    b.Navigation("Images");
+
+                    b.Navigation("Offers");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.Catogry.WishList", b =>
+                {
+                    b.Navigation("WishListProducts");
+                });
+
+            modelBuilder.Entity("Basket.Core.Entity.User.ApplicationUser", b =>
+                {
+                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }
